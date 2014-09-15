@@ -1,8 +1,24 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Chemotaxis extends PApplet {
+
  //declare bacteria variables here 
  Bacteria [] colony;
  int mousX, mousY;
  int siz;
- void setup()   
+ public void setup()   
  {     
  	//initialize bacteria variables here
  	siz = 20;
@@ -15,12 +31,12 @@
  	mousX = 0;
  	mousY = 0;
  }  
- void mousePressed()
+ public void mousePressed()
  {
  	mousX = mouseX;
  	mousY = mouseY;
  } 
- void draw()   
+ public void draw()   
  {    
  	//move and show the bacteria\
  	background(0);
@@ -32,7 +48,7 @@
  	}
  	pizza(mousX, mousY);
  }  
-void pizza(int x,int y)
+public void pizza(int x,int y)
 {
  	fill(124,77,48);
  	ellipse(x, y, 28,28);
@@ -53,7 +69,7 @@ void pizza(int x,int y)
  	fill(0,255,0);
  	text("Created by Averal Kandala",250, 40);
  }
- void eatChecker(Bacteria bat)
+ public void eatChecker(Bacteria bat)
  {
  	if(bat.x == mousX && bat.y == mousY)
  	{
@@ -84,7 +100,7 @@ void pizza(int x,int y)
  		xBias = 0;
  		yBias = 0;
  	}
- 	void walk()
+ 	public void walk()
  	{
  		//Biased
  		if(mousX > x)
@@ -114,9 +130,18 @@ void pizza(int x,int y)
  		x += (int)(Math.random()*4)+xBias;
  		y += (int)(Math.random()*4)+yBias;
  	}
- 	void show()
+ 	public void show()
  	{
  		fill(r,g,b);
  		ellipse(x,y,10,10);
  	}  
  }    
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Chemotaxis" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
