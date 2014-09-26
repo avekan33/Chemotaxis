@@ -21,7 +21,7 @@ public class Chemotaxis extends PApplet {
  public void setup()   
  {     
  	//initialize bacteria variables here
- 	siz = 20;
+ 	siz = 200;
  	size(500,500);
  	colony = new Bacteria[siz];
  	for(int i=0; i<colony.length;i++)
@@ -62,6 +62,12 @@ public void pizza(int x,int y)
  	ellipse(x-6, y-1, 4,4);
  	ellipse(x+6, y, 4,4);
  	ellipse(x,y-1, 4,4); 
+ 	fill(255,255,0,20);
+ 	ellipse(x,y,80,80);
+ 	fill(255,255,0,30);
+ 	ellipse(x,y,60,60);
+ 	fill(255,255,0,40);
+ 	ellipse(x,y,40,40);
  	fill(255,255,0);
  	textAlign(CENTER);
  	textSize(30);
@@ -92,8 +98,8 @@ public void pizza(int x,int y)
  	int r,g,b;
  	Bacteria()
  	{
- 		x = 250;
- 		y = 250;
+ 		x = (int)(Math.random()*70+200); 		
+ 		y = (int)(Math.random()*70+200);
  		r = (int)(Math.random()*256);
  		g = (int)(Math.random()*256); 		
  		b = (int)(Math.random()*256);
@@ -132,8 +138,11 @@ public void pizza(int x,int y)
  	}
  	public void show()
  	{
+ 		noStroke();
  		fill(r,g,b);
- 		ellipse(x,y,10,10);
+ 		ellipse(x,y,8,8);
+ 		fill(r,g,b,30);
+ 		ellipse(x,y,20,20);
  	}  
  }    
   static public void main(String[] passedArgs) {
